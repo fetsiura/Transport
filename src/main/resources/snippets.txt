@@ -1,0 +1,20 @@
+
+Instruction:
+run docker
+login into docker
+pull image from github
+execute docker-compose from folder where the docker-compose file is
+enjoying
+
+Docker command:
+
+mvn spring-boot:build-image -DskipTests=true
+docker tag transrest:0.0.1-SNAPSHOT linuxgts/transport-rest:latest
+docker push linuxgts/transport-rest:latest
+docker-compose pull linuxgts/transport-rest:latest
+docker-compose stop transport-rest
+
+docker-compose up -d --build  -> to install docker container
+
+Tooltip:
+- for install container, myslq app should be stop on local machine to avoid ports conflict. "sudo systemctl stop mysql" OR change deploy port in yaml file

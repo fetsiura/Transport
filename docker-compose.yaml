@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sql2024
+      MYSQL_DATABASE: transrest
+    networks:
+      springboot-mysql-net:
+
+  transport-rest:
+    container_name: transport-rest
+    image: linuxgts/transport-rest:latest
+    ports:
+        - "8080:8080"
+    networks:
+      springboot-mysql-net:
+    restart: on-failure
+
+networks:
+  springboot-mysql-net:
